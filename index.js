@@ -25,8 +25,12 @@ app.use(bodyParser.json());
 
 //rotas
 app.get("/",(req, res) => {
-
-    res.render("index");
+    Question.findAll({ raw: true}).then(questions =>{
+        //console.log(questions);
+        res.render("index",{
+            questions : questions
+        });
+    })
 });
 
 app.get("/perguntar",(req, res) =>{
@@ -36,6 +40,7 @@ app.get("/perguntar",(req, res) =>{
 app.post("/salvarpergunta",(req,res) => {
     var titulo = req.body.titulo;
     var descricao = req.body.descricao;
+    
     Question.create({
         title: titulo,
         description: descricao
