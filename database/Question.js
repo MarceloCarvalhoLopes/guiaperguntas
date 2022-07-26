@@ -1,3 +1,4 @@
+const { Model } = require("sequelize");
 const Sequelize = require("sequelize");
 const connection = require("./database");
 
@@ -15,3 +16,5 @@ const Question = connection.define('questions',{
 Question.sync({force: false}).then(() =>{
     //console.log("Table question created!")
 });
+
+module.exports = Question;
