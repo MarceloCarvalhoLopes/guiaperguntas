@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
+const questionModel = require("./database/Question");
 
 //database
 connection
@@ -18,6 +19,7 @@ app.set('view engine','ejs');
 app.use(express.static('public'));
 
 //body parser
+//responsável para traduzir os dados enviados pelo formulário em uma estrutura javascript para usar no backend
 app.use(bodyParser.urlencoded({extended: false}))
 app.use(bodyParser.json());
 
