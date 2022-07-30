@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const connection = require("./database/database");
 const Question = require("./database/Question");
-const Answer = require("./database/Answer");
+const Answers = require("./database/Answer");
 
 //database
 connection
@@ -67,6 +67,17 @@ app.get("/pergunta/:id",(req,res) => {
             res.redirect("/");
         }
     })
+});
+
+app.post("/responder",(req, res) => {
+    var corpo = req.body.corpo;
+    var perguntaId = req.body.pergunta;
+    Answers.create({
+        body: corpo,
+        questionId: perguntaId
+    }).then(()=>{
+        res.redirect("/pergunta/"+perguntaId); //res.redirect("/pergunta/"2)
+    }); 
 });
 
 app.listen(8080,() => {
