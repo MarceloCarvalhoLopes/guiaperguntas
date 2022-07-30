@@ -9,9 +9,10 @@
         <hr>
         <form>
             <h3>Responda</h3>
-            <label>Resposta</label>
+            <label>Resposta:</label>
             <textarea placeholder="Digite sua resposta" class="form-control" name="body"></textarea><br>
-            <button type="submit" class="btn bnt-primary">Responder</button>
+            <input type="hidden" name="pergunta" value="<%= pergunta.id %>" >
+            <button type="submit" class="btn btn-primary">Responder</button>
         </form>
     </div>
 
